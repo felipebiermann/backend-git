@@ -34,4 +34,12 @@ router.put("/edit/:id", (req, res) => {
   return res.status(200).json(newDocument[0]);
 });
 
+router.delete("/delete/:id", (req, res) => {
+  const { id } = req.params;
+  const document = data.filter((currentDocument) => currentDocument.id === id);
+  const index = data.indexOf(document[0]);
+  data.splice(index, 1);
+  return res.status(200).json(data);
+});
+
 module.exports = router;
